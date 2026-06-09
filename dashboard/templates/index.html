@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent-7 Dashboard</title>
+    <meta name="description" content="Real-time monitoring dashboard for Agent-7 AI System Automation">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-left">
+            <div class="logo">
+                <span class="logo-icon">🤖</span>
+                <span class="logo-text">Agent-7</span>
+            </div>
+            <div class="status-badge" id="statusBadge">
+                <span class="status-dot"></span>
+                <span class="status-text">Connecting...</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-stat">
+                <span class="stat-label">Actions</span>
+                <span class="stat-value" id="actionCount">0</span>
+            </div>
+            <div class="header-stat">
+                <span class="stat-label">Tasks</span>
+                <span class="stat-value" id="taskCount">0</span>
+            </div>
+            <button class="btn btn-screenshot" id="btnScreenshot" title="Take Screenshot">
+                📸 Capture
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Left Panel: Screen View -->
+        <section class="panel screen-panel">
+            <div class="panel-header">
+                <h2>🖥️ Live Screen</h2>
+                <span class="panel-badge" id="screenTimestamp">--:--:--</span>
+            </div>
+            <div class="screen-container" id="screenContainer">
+                <div class="screen-placeholder">
+                    <span class="placeholder-icon">🖥️</span>
+                    <p>Click "Capture" to take a screenshot</p>
+                </div>
+                <img id="screenImage" class="screen-image" style="display:none" alt="Screen capture">
+            </div>
+        </section>
+
+        <!-- Right Panel: Activity -->
+        <section class="panel activity-panel">
+            <!-- Current Task -->
+            <div class="panel-section">
+                <div class="panel-header">
+                    <h2>📋 Current Task</h2>
+                </div>
+                <div class="current-task" id="currentTask">
+                    <p class="task-idle">No active task</p>
+                </div>
+            </div>
+
+            <!-- Action Log -->
+            <div class="panel-section log-section">
+                <div class="panel-header">
+                    <h2>📜 Action Log</h2>
+                    <button class="btn btn-small" id="btnClearLog">Clear</button>
+                </div>
+                <div class="action-log" id="actionLog">
+                    <div class="log-entry log-system">
+                        <span class="log-time">--:--</span>
+                        <span class="log-message">Dashboard connected. Waiting for agent activity...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="/static/app.js"></script>
+</body>
+</html>
